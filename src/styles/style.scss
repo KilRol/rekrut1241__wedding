@@ -1,0 +1,37 @@
+@import "~normalize.css";
+@import "fonts";
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    transition: 1s;
+}
+
+.page {
+    background-color: #f5eee5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.font {
+    color: #333333;
+    &__moontime {
+        font-family: "Moontime", sans-serif;
+    }
+    &__forum {
+        font-family: "Forum", sans-serif;
+    }
+    &__hangyaboly {
+        font-family: "Hangyaboly", sans-serif;
+    }
+}
+
+.container {
+    border: 1px solid #333333;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1200px;
+}
