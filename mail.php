@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 $recepient = "sniper.lech@yandex.ru";
 $sitename = "Название сайта";
 
