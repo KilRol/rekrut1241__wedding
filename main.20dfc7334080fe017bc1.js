@@ -10983,7 +10983,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function() {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#form").submit(function() {
         jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
             type: "POST",
-            url: "mail.php",
+            url: "https://kilrol.github.io/rekrut1241__wedding/mail.php",
             data: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).serialize()
         }).done(function() {
             jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find("input").val("");
