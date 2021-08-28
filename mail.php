@@ -1,54 +1,43 @@
-<!-- <?php
-        header("Access-Control-Allow-Origin: *");
-        $recepient = "sniper.lech@yandex.ru";
-        $sitename = "Название сайта";
-
-        $name = trim($_POST["name"]);
-        $phone = trim($_POST["phone"]);
-        $text = trim($_POST["text"]);
-        $message = "Имя: $name \nТелефон: $phone \nТекст: $text";
-
-        $pagetitle = "Новая заявка с сайта \"$sitename\"";
-        mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"\n From: $recepient"); ?>-->
-
 <?php
-//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+    /*ПОМЕЩАЕМ ДАННЫЕ ИЗ ПОЛЕЙ В ПЕРЕМЕННЫЕ*/
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $text_comment = $_POST["text_comment"];
+    $type = $_POST["type"];
 
-//Load Composer's autoloader
-require('PHPMailer/Exception.php');
-require('PHPMailer/SMTP.php');
-require('PHPMailer/PHPMailer.php');
+    /*ЗДЕСЬ ПРОВЕРЯЕМ ЕСЛИ ХОТЯ БЫ ОДНО ИЗ ПОЛЕЙ НЕ ЗАПОЛНЕНО МЫ ВОЗВРАЩАЕМ СООБЩЕНИЕ*/
+    if($name=="" or $email=="" or $phone=="" or $text_comment==""){ 
+        echo "Заполните все поля";
+    }
 
-//Create an instance; passing `true` enables exceptions
-$mail = new PHPMailer(true);
+    else{
+        /*ЕСЛИ ВСЕ ПОЛЯ ЗАПОЛНЕНЫ НАЧИНАЕМ СОБИРАТЬ ДАННЫЕ ДЛЯ ОТПРАВКИ*/
+        $to = "sniper.lech@gmail.com"; /* Адрес, куда отправляем письма*/
+        $subject = "Письмо с обратной связи"; /*Тема письма*/
+        $headers = "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type: text/html; charset=utf-8\r\n";
+        $headers .= "From: <admin@a0575050.xsph.ru>\r\n";/*ОТ КОГО*/
 
-try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.yandex.ru';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'sniper.lech@yandex.ru';                     //SMTP username
-    $mail->Password   = '08072000';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
- 
-    //Recipients
-    $mail->setFrom('sniper.lech@yandex.ru', 'Mailer');
-    $mail->addAddress('sniper.lech@yandex.ru', 'Joe User');     //Add a recipient
+        /*ВО ВНУТРЬ ПЕРЕМЕННОЙ $message ЗАПИСЫВАЕМ ДАННЫЕ ИЗ ПОЛЕЙ */
+        $message .= "Имя пользователя: ".$name."\n";
+        $message .= "Почта: ".$email."\n";
+        $message .= "Телефон: ".$phone."\n";
+        $message .= "Сообщение: ".$text_comment."\n";
+        $message .= "Способ представления: " .$type. "\n";
 
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        /*ДЛЯ ОТЛАДКИ ВЫ МОЖЕТЕ ПРОВЕРИТЬ ПРАВИЛЬНО ЛИ ЗАПИСАЛИCM ДАННЫЕ ИЗ ПОЛЕЙ*/
 
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+        $send = mail($to, $subject, $message, $headers);
+
+        /*ЕСЛИ ПИСЬМО ОТПРАВЛЕНО УСПЕШНО ВЫВОДИМ СООБЩЕНИЕ*/
+        if ($send == "true")
+        {
+            echo "Ваше сообщение отправлено. Мы ответим вам в ближайшее время.\r\n";
+        }
+        /*ЕСЛИ ПИСЬМО НЕ УДАЛОСЬ ОТПРАВИТЬ ВЫВОДИМ СООБЩЕНИЕ ОБ ОШИБКЕ*/
+        else
+        {
+            echo "Не удалось отправить, попробуйте снова!";
+        }
+    }

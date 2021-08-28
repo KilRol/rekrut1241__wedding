@@ -10977,26 +10977,45 @@ let x = setInterval(() => {
 
 }, 1000);
 
-
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function() {
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("#form").submit(function() {
+    var form = document.querySelector("#type");
+
+    /*ПРОВЕРЯЕМ НАЖАТА ЛИ КНОПКА ОТПРАВКИ*/
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#btn_submit').click(function() {
+        // собираем данные с формы
+        var user_name = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#name').val();
+        var user_email = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#email').val();
+        var user_phone = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#phone').val();
+        var text_comment = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#text_comment').val();
+        var type = new FormData(form);
+        var output = "";
+        for (const entry of type) {
+            output = entry[1] + "\r";
+        };
+        // отправляем данные
         jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
-            type: "POST",
-            url: "https://kilrol.github.io/rekrut1241__wedding/mail.php",
-            data: jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).serialize()
-        }).done(function() {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find("input").val("");
-            alert("Спасибо за заявку! Скоро мы с вами свяжемся.");
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()("#form").trigger("reset");
-        }).fail(function() {
-
-            alert("Error :-(");
-
+            url: "mail.php", // куда отправляем
+            type: "post", // метод передачи
+            data: { // что отправляем
+                "name": user_name,
+                "email": user_email,
+                "phone": user_phone,
+                "text_comment": text_comment,
+                "type": output
+            },
+            error: function() { jquery__WEBPACK_IMPORTED_MODULE_0___default()("#erconts").html("Произошла ошибка!"); },
+            /* если произойдет ошибка в элементе с id erconts выведится сообщение*/
+            beforeSend: function() {
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()("#erconts").html("Отправляем данные...");
+            },
+            success: function(result) {
+                /* В случае удачной обработки и отправки выполнится следующий код*/
+                jquery__WEBPACK_IMPORTED_MODULE_0___default()('#erconts').html(result);
+                console.log("SUCC");
+            }
         });
-        return false;
     });
-
 });
 })();
 
