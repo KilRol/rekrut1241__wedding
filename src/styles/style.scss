@@ -1,512 +1,563 @@
 @import "~normalize.css";
 @import "fonts";
+
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
-    // transition: 1s;
+  box-sizing: border-box;
+  // transition: 1s;
 }
 
 input[type="text"],
 textarea,
 input:focus {
-    border: solid 1px #ccc;
-    border-radius: 7px;
-    outline: 0;
+  border: solid 1px #ccc;
+  border-radius: 7px;
+  outline: 0;
 }
 
 $font_color: #7c715b;
 .page {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f5eee6;
-    font-family: "Forum", sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f5eee6;
+  font-family: "Forum", sans-serif;
 }
 
 hr {
-    border: 0;
-    width: 70%;
-    background-color: #333;
-    height: 1px;
+  border: 0;
+  width: 70%;
+  background-color: #333;
+  height: 1px;
 }
 
 .container {
-    &__inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        width: 768px;
-    }
+  .container {
+    width: 768px;
+  }
 }
 
 %slide {
-    min-height: 100vh;
-    position: relative;
-    color: $font_color;
+  min-height: 100vh;
+  position: relative;
+  color: $font_color;
 }
 
 .welcome {
-    @extend %slide;
+  @extend %slide;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Hangyaboly", sans-serif;
+  color: $font_color;
+
+  &__img {
+    max-width: 40vh;
+  }
+
+  &__heading {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+  }
+
+  &__cover {
+    padding: 10vh 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-family: "Hangyaboly", sans-serif;
-    color: $font_color;
-    &__img {
-        max-width: 40vh;
-    }
-    &__heading {
-        margin: 0;
-        padding: 0;
-        font-size: 30px;
-    }
-    &__cover {
-        padding: 10vh 0 0 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    &__date {
-        text-align: center;
-        font-family: "Forum", sans-serif;
-        font-size: 20px;
-        margin: 1rem 0 0 0;
-    }
+  }
+
+  &__date {
+    text-align: center;
+    font-family: "Forum", sans-serif;
+    font-size: 20px;
+    margin: 1rem 0 0 0;
+  }
 }
 
 .announcement {
-    @extend %slide;
-    font-family: "Forum", sans-serif;
-    font-feature-settings: "tnum" on, "lnum" on;
-    color: $font_color;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  @extend %slide;
+  font-family: "Forum", sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: $font_color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  &__heading {
+    margin: 0;
+    padding: 2rem 0;
+    font-size: 26px;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  &__img {
     width: 100%;
-    &__heading {
-        margin: 0;
-        padding: 2rem 0;
-        font-size: 26px;
-        font-weight: normal;
-        text-transform: uppercase;
+    height: 20vh;
+    object-fit: cover;
+  }
+
+  &__text {
+    font-size: 18px;
+    padding: 4rem 3rem;
+
+    p {
+      margin: 0;
+      padding: 0 0 6vh 0;
     }
-    &__img {
-        width: 100%;
-        height: 20vh;
-        object-fit: cover;
-    }
-    &__text {
-        font-size: 18px;
-        padding: 4rem 3rem;
-        p {
-            margin: 0;
-            padding: 0 0 6vh 0;
-        }
-    }
+  }
 }
 
 .program {
-    @extend %slide;
-    font-family: "Forum", sans-serif;
-    font-feature-settings: "tnum" on, "lnum" on;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18 px;
+  @extend %slide;
+  font-family: "Forum", sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  width: 100%;
+
+  &__img {
     width: 100%;
-    &__img {
-        width: 100%;
-        height: 20vh;
-        object-fit: cover;
+    height: 20vh;
+    object-fit: cover;
+  }
+
+  &__heading {
+    margin: 0;
+    padding: 2rem 0;
+    font-size: 30px;
+    font-weight: normal;
+  }
+
+  &__list {
+    padding: 0 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__item {
+      display: inline-flex;
+      align-items: center;
     }
-    &__heading {
-        margin: 0;
-        padding: 2rem 0;
-        font-size: 30px;
-        font-weight: normal;
+  }
+
+  &__tire {
+    display: block;
+    position: relative;
+    width: 40px;
+    margin: 0 20px;
+
+    span {
+      position: absolute;
+      content: " ";
+      height: 2px;
+      background-color: #333;
+      width: 40px;
     }
-    &__list {
-        padding: 0 1rem;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        &__item {
-            display: inline-flex;
-            align-items: center;
-        }
-    }
-    &__tire {
-        display: block;
-        position: relative;
-        width: 40px;
-        margin: 0 20px;
-        span {
-            position: absolute;
-            content: " ";
-            height: 2px;
-            background-color: #333;
-            width: 40px;
-        }
-    }
+  }
 }
 
 .location {
-    @extend %slide;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 2rem;
-    justify-content: center;
-    width: 100%;
-    &__img {
-        max-width: 45vh;
-    }
-    font-family: "Forum",
-    sans-serif;
-    font-feature-settings: "tnum" on,
-    "lnum" on;
-    color: $font_color;
-    &__heading {
-        text-align: center;
-        font-weight: normal;
-        margin: 4rem 0 0 0;
-        font-size: 26px;
-    }
-    &__place {
-        text-align: center;
-        font-size: 18px;
-    }
+  @extend %slide;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  justify-content: center;
+  width: 100%;
+
+  &__img {
+    max-width: 45vh;
+  }
+
+  font-family: "Forum",
+  sans-serif;
+  font-feature-settings: "tnum" on,
+  "lnum" on;
+  color: $font_color;
+
+  &__heading {
+    text-align: center;
+    font-weight: normal;
+    margin: 4rem 0 0 0;
+    font-size: 26px;
+  }
+
+  &__place {
+    text-align: center;
+    font-size: 18px;
+  }
 }
 
 .map {
-    @extend %slide;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    &__heading {
-        padding: 0 0 2rem 0;
-        font-size: 30px;
-        font-weight: normal;
-    }
+  @extend %slide;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__heading {
+    padding: 0 0 2rem 0;
+    font-size: 30px;
+    font-weight: normal;
+  }
 }
 
 .alcohol {
-    @extend %slide;
-    padding: 0 1rem;
+  @extend %slide;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  padding: 0 4rem 2rem;
+  flex-direction: column;
+
+  &__heading {
+    text-align: center;
+    font-weight: normal;
+    margin: 40px 0;
+    font-size: 30px;
+  }
+
+  &__set {
+    flex-wrap: wrap;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  &__form {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    padding: 0 4rem 2rem;
     flex-direction: column;
-    &__heading {
-        text-align: center;
-        font-weight: normal;
-        margin: 40px 0;
-        font-size: 30px;
+  }
+
+  &__area {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    width: 80%;
+    box-sizing: border-box;
+    height: 60px;
+    resize: vertical;
+  }
+
+  &__item {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 120px;
+    height: 120px;
+    margin: 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.4em;
+      width: 100%;
+      padding-bottom: 1rem;
     }
-    &__set {
-        flex-wrap: wrap;
-        display: flex;
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
     }
-    &__form {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    width: 65px;
+    background-color: #eee;
+
+    &__vodka {
+      background: url("../assets/vodka.svg") no-repeat center;
     }
-    &__area {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        display: flex;
-        width: 80%;
-        box-sizing: border-box;
-        height: 60px;
-        resize: vertical;
+
+    &__redwine {
+      background: url("../assets/wine.svg") no-repeat center;
     }
-    &__item {
-        display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
-        width: 120px;
-        height: 120px;
-        margin: 6px;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 2.4em;
-            width: 100%;
-            padding-bottom: 1rem;
-        }
-        input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
+
+    &__whitewine {
+      background: url("../assets/wine.svg") no-repeat center;
     }
-    /* Create a custom checkbox */
-    .checkmark {
-        transition: 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 65px;
-        width: 65px;
-        background-color: #eee;
-        &__vodka {
-            background: url("../assets/vodka.svg") no-repeat center;
-        }
-        &__redwine {
-            background: url("../assets/wine.svg") no-repeat center;
-        }
-        &__whitewine {
-            background: url("../assets/wine.svg") no-repeat center;
-        }
-        &__cognac {
-            background: url("../assets/cognac.svg") no-repeat center;
-        }
-        &__whiskey {
-            background: url("../assets/whiskey.svg") no-repeat center;
-        }
+
+    &__cognac {
+      background: url("../assets/cognac.svg") no-repeat center;
     }
-    .alcohol__item input:checked+.alcohol__item {
-        background-color: #333;
+
+    &__whiskey {
+      background: url("../assets/whiskey.svg") no-repeat center;
     }
-    .alcohol__item input:checked~.checkmark {
-        transform: scale(0.8);
-        transition: 0.2s;
-    }
-    .alcohol__item input:checked~label {
-        color: #352f2f;
-        font-weight: bold;
-        border-bottom: #333 solid 2px;
-    }
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-    .alcohol__item input:checked~.checkmark:after {
-        display: block;
-    }
+  }
+
+  .alcohol__item input:checked + .alcohol__item {
+    background-color: #333;
+  }
+
+  .alcohol__item input:checked ~ .checkmark {
+    transform: scale(0.8);
+    transition: 0.2s;
+  }
+
+  .alcohol__item input:checked ~ label {
+    color: #352f2f;
+    font-weight: bold;
+    border-bottom: #333 solid 2px;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .alcohol__item input:checked ~ .checkmark:after {
+    display: block;
+  }
 }
 
 .countdown {
-    @extend %slide;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-family: "Forum", sans-serif;
-    font-feature-settings: "tnum" on, "lnum" on;
-    color: $font_color;
-    &__heading {
-        margin: 0;
-        padding: 2rem;
-        font-weight: normal;
-        font-size: 30px;
-        flex: 1 0 auto;
-    }
-    &__timer {
-        flex: 1 0 auto;
-        font-size: 24px;
-        text-align: center;
-    }
-    &__flowers {
-        flex: 0 0 auto;
-        width: 100%;
-        object-fit: cover;
-    }
+  @extend %slide;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Forum", sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: $font_color;
+
+  &__heading {
+    margin: 0;
+    padding: 2rem;
+    font-weight: normal;
+    font-size: 30px;
+    flex: 1 0 auto;
+  }
+
+  &__timer {
+    flex: 1 0 auto;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__flowers {
+    flex: 0 0 auto;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .confirmation {
-    @extend %slide;
-    font-family: "Forum", sans-serif;
-    font-feature-settings: "tnum" on, "lnum" on;
+  @extend %slide;
+  font-family: "Forum", sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  display: flex;
+  color: $font_color;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+
+  &__tag {
+    font-family: "Moontime", sans-serif;
+    transform: rotate(270deg);
+    width: 6rem;
+    height: fit-content;
+    margin: 8rem 1rem 0 0;
+    // margin: 24vh 10vw 0 0;
+    font-size: 80px;
     display: flex;
-    color: $font_color;
+    font-weight: normal;
+  }
+
+  &__heading {
+    font-size: 30px;
+    padding: 0 0 5vh 0;
+  }
+
+  &__list {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0 2rem;
-    &__tag {
-        font-family: "Moontime", sans-serif;
-        transform: rotate(270deg);
-        width: 6rem;
-        height: fit-content;
-        margin: 8rem 1rem 0 0;
-        // margin: 24vh 10vw 0 0;
-        font-size: 80px;
-        display: flex;
-        font-weight: normal;
-    }
-    &__heading {
-        font-size: 30px;
-        padding: 0 0 5vh 0;
-    }
-    &__list {
-        display: flex;
-        flex-direction: column;
-    }
-    &__img {
-        max-width: 100%;
-        padding: 6rem 0 0 0;
-    }
+  }
+
+  &__img {
+    max-width: 100%;
+    padding: 6rem 0 0 0;
+  }
 }
 
 .form {
-    @extend %slide;
-    font-family: "Forum", sans-serif;
-    font-feature-settings: "tnum" on, "lnum" on;
-    padding: 0 4rem;
+  @extend %slide;
+  font-family: "Forum", sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__heading {
+    color: $font_color;
+    font-size: 24px;
+    padding: 0 0 4rem 0;
+  }
+
+  &__fields {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    &__heading {
-        color: $font_color;
-        font-size: 24px;
-        padding: 0 0 4rem 0;
+
+    &__item {
+      margin: 0.3rem 0;
     }
-    &__fields {
-        display: flex;
-        flex-direction: column;
-        &__item {
-            margin: 0.3rem 0;
-        }
-    }
-    textarea {
-        width: 100%;
-        min-height: 60px;
-    }
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 60px;
+  }
 }
 
 .ending {
-    @extend %slide;
-    position: relative;
-    color: $font_color;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 3rem;
-    font-family: "Forum", sans-serif;
-    font-feature-settings: "tnum" on, "lnum" on;
-    text-transform: uppercase;
-    text-align: center;
-    align-items: center;
-    &__img {
-        max-width: 100%;
-    }
-    &__heading {
-        font-size: 30px;
-        font-weight: normal;
-    }
+  @extend %slide;
+  position: relative;
+  color: $font_color;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 3rem;
+  font-family: "Forum", sans-serif;
+  font-feature-settings: "tnum" on, "lnum" on;
+  text-transform: uppercase;
+  text-align: center;
+  align-items: center;
+
+  &__img {
+    max-width: 100%;
+  }
+
+  &__heading {
+    font-size: 30px;
+    font-weight: normal;
+  }
 }
 
 .flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 
 /* для элемента input c type="radio" */
 
 .custom-radio {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
 
 
 /* для элемента label связанного с .custom-radio */
 
-.custom-radio+label {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
+.custom-radio + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
 }
 
 
 /* создание в label псевдоэлемента  before со следующими стилями */
 
-.custom-radio+label::before {
-    content: "";
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-    flex-grow: 0;
-    border: 1px solid #adb5bd;
-    border-radius: 50%;
-    margin-right: 0.5em;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 50% 50%;
+.custom-radio + label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
 }
 
 
 /* стили при наведении курсора на радио */
 
-.custom-radio:not(:disabled):not(:checked)+label:hover::before {
-    // border-color: #b3d7ff;
+.custom-radio:not(:disabled):not(:checked) + label:hover::before {
+  // border-color: #b3d7ff;
 }
 
 
 /* стили для активной радиокнопки (при нажатии на неё) */
 
-.custom-radio:not(:disabled):active+label::before {
-    // background-color: #b3d7ff;
-    // border-color: #b3d7ff;
+.custom-radio:not(:disabled):active + label::before {
+  // background-color: #b3d7ff;
+  // border-color: #b3d7ff;
 }
 
 
 /* стили для радиокнопки, находящейся в фокусе */
 
-.custom-radio:focus+label::before {
-    // box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.custom-radio:focus + label::before {
+  // box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 
 /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
 
-.custom-radio:focus:not(:checked)+label::before {
-    // border-color: #80bdff;
+.custom-radio:focus:not(:checked) + label::before {
+  // border-color: #80bdff;
 }
 
 
 /* стили для радиокнопки, находящейся в состоянии checked */
 
-.custom-radio:checked+label::before {
-    border-color: #352f2f62;
-    background-color: #7c715ba9;
+.custom-radio:checked + label::before {
+  border-color: #352f2f62;
+  background-color: #7c715ba9;
 }
 
 
 /* стили для радиокнопки, находящейся в состоянии disabled */
 
-.custom-radio:disabled+label::before {
-    background-color: #e9ecef;
+.custom-radio:disabled + label::before {
+  background-color: #e9ecef;
 }
