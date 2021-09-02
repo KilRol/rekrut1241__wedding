@@ -3,16 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
+
 
 let isDev = process.env.NODE_ENV === 'development'
 let isProd = process.env.NODE_ENV === 'production'
 
-const filename = ext => isDev ? `[name].${ext}` :`[name].[contenthash].${ext}`
+const filename = ext => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: "development",
-    entry: './index.js',
+    entry: {
+        main: './index.js',
+    },
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),
@@ -26,6 +30,10 @@ module.exports = {
         writeToDisk: true,
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
         new HtmlWebpackPlugin({
             hash: true,
             title: "Сергей и Анастасия",
@@ -36,11 +44,14 @@ module.exports = {
             }
         }),
         new CopyWebpackPlugin({
-            patterns: [
-                {
+            patterns: [{
                     from: path.resolve(__dirname, 'src/assets'),
                     to: path.resolve(__dirname, 'dist/assets')
                 },
+                {
+                    from: './mail.php',
+                    to: path.resolve(__dirname, 'dist')
+                }
             ],
             options: {
                 concurrency: 100
@@ -51,8 +62,7 @@ module.exports = {
         }),
     ],
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
